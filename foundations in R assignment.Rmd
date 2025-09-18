@@ -24,12 +24,12 @@ print(condition)
 
 4. Create a dataframe from the variables in #1-3. 
 ```{r}
-df <- data.frame(Condition = condition, Participants = participants, Score = score)
+df_variables <- data.frame(Condition = condition, Participants = participants, Score = score)
 ```
 
 5. Take the mean of the score column from your dataframe.
 ```{r}
-mean(df$Score)
+mean(df_variables$Score)
 ```
 
 6. Open the mtcars dataframe. Print the dataframe.  
