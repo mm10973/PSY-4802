@@ -1,0 +1,99 @@
+---
+title: "Foundations in R pt 1"
+author: "Amanda Woodward"
+date: "2025-09-16"
+output: html_document
+---
+For your first R Assignment, complete the questions below. Remember, weekly assignments are graded based on attempts, so it's ok if you don't get everything immediately. Please submit your answers by 1) updating this file in your GitHub repository and 2) uploading a .html file of the assignment to this repository. 
+
+1. Create a vector called score that starts at 1 and contains every 9th number between 1 and 100. 
+```{r}
+score <- seq(from =1, to =100, by =9)
+```
+
+2. Create a vector called participants that contains the numbers 1-12.
+```{r}
+participants <- c(1:12)
+```
+
+3. Create a list called condition that alternates the words control and experimental six times, for a total of 12 words.
+```{r}
+condition <- rep(c("control", "experimental"), times = 6)
+print(condition)
+```
+
+4. Create a dataframe from the variables in #1-3. 
+```{r}
+df <- data.frame(Condition = condition, Participants = participants, Score = score)
+```
+
+5. Take the mean of the score column from your dataframe.
+```{r}
+mean(df$Score)
+```
+
+6. Open the mtcars dataframe. Print the dataframe.  
+```{r}
+View(mtcars)
+print(mtcars)
+```
+
+7. Create a subset of data for cars that have 6 cylinders (cyl column).
+```{r}
+subset(mtcars, cyl == 6)
+```
+
+8. Summarize this subset of data. 
+```{r}
+summary(subset(mtcars, cyl == 6))
+```
+
+8. Create a dataframe that contains cars with higher than average miles per gallon (mpg). 
+```{r}
+cars_subset <- data.frame(subset(mtcars, mpg > mean(mtcars$mpg)))
+
+```
+
+9. How many cars are in this subset? 
+```{r}
+nrow(cars_subset)
+```
+
+10. Load the ggplot2 library
+```{r}
+install.packages("ggplot2", repo = "http://cran.us.r-project.org")
+library(ggplot2)
+```
+
+
+
+11. Open the diamonds dataset. How do you know that you've loaded it?
+```{r}
+View(diamonds)
+```
+
+12. Create a new dataframe that has diamonds greater than 1 carat and an ideal cut. 
+```{r}
+
+Diamond_Cuts <- data.frame(subset(diamonds, carat > 1.00 & cut == "Ideal"))
+
+```
+
+13. Find the mean and standard deviation of price for this new dataset. 
+```{r}
+mean(Diamond_Cuts$price)
+sd(Diamond_Cuts$price)
+```
+
+14. Create another new dataframe that includes all diamonds with a price between $2500 and $5000. 
+```{r}
+Diamond_Prices <- data.frame(subset(diamonds, price < 5000 & price > 2500))
+```
+
+15. Which color occurs most in this new subset? 
+```{r}
+install.packages("modeest", repo = "http://cran.us.r-project.org")
+library(modeest)
+mfv(Diamond_Prices$color)
+```
+
